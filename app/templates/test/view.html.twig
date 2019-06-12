@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    View item
+    {{ 'title.element_view'|trans({"%id%": item.id|default()}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>View item</h1>
+    {% if item is defined and item|length %}
+        <dl>
+            <dt>Title</dt>
+            <dd>{{ item.title }}</dd>
+            <dt>Tags</dt>
+            <dd>{{ item.tags|join(', ') }}</dd>
+            <dt>
+                <a href="{{  url('test_index') }}"
+                   title = "index">index</a>
+            </dt>
+        </dl>
+    {% else %}
+        <p>
+            Item not found.
+        </p>
+    {% endif %}
+{% endblock %}
